@@ -1,33 +1,14 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { companies, CATEGORIES } from "@/data/companies";
 import { Badge } from "@/components/ui/badge";
-import { VoteButtons } from "@/components/vote-buttons";
 import { ExternalLink, Search } from "lucide-react";
-
-type VoteCount = { company_id: string; score: number };
 
 export function CompanyGrid() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("All");
-  const [voteCounts, setVoteCounts] = useState<Record<string, number>>({});
-  const [userVotes, setUserVotes] = useState<Record<string, number>>({});
-
-  useEffect(() => {
-    fetch("/api/votes")
-      .then((r) => r.json())
-      .then(({ counts, userVotes: uv }) => {
-        const map: Record<string, number> = {};
-        (counts as VoteCount[]).forEach((c) => {
-          map[c.company_id] = c.score;
-        });
-        setVoteCounts(map);
-        setUserVotes(uv ?? {});
-      })
-      .catch(() => {});
-  }, []);
 
   const filtered = useMemo(() => {
     return companies.filter((c) => {
@@ -76,7 +57,6 @@ export function CompanyGrid() {
         </div>
       </div>
 
-      {/* List */}
       {filtered.length === 0 ? (
         <div className="py-16 text-center text-zinc-400 text-sm">
           No companies match your search.
@@ -86,17 +66,8 @@ export function CompanyGrid() {
           {filtered.map((company) => (
             <div
               key={company.id}
-              className="group grid grid-cols-[2rem_3rem_1fr] gap-4 py-6 sm:grid-cols-[2.5rem_4rem_1fr]"
+              className="group grid grid-cols-[3.5rem_1fr] gap-4 py-6"
             >
-              {/* Vote */}
-              <div className="flex items-start justify-center pt-1">
-                <VoteButtons
-                  companyId={company.id}
-                  initialScore={voteCounts[company.id] ?? 0}
-                  initialUserVote={userVotes[company.id] ?? 0}
-                />
-              </div>
-
               {/* Rank */}
               <div className="pt-0.5">
                 <span className="font-serif text-3xl font-bold text-zinc-200 leading-none sm:text-4xl">

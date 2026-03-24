@@ -1,5 +1,4 @@
 import { CompanyGrid } from "@/components/company-grid";
-import { NavAuth } from "@/components/nav-auth";
 import { companies } from "@/data/companies";
 
 export default function Home() {
@@ -11,18 +10,21 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Nav */}
-      <nav className="border-b border-zinc-200 bg-white sticky top-0 z-10">
+      <nav className="border-b border-zinc-200 sticky top-0 z-10 bg-white">
         <div className="mx-auto max-w-3xl flex items-center justify-between px-4 py-3">
           <span className="text-xs font-medium uppercase tracking-widest text-zinc-400">
             The List
           </span>
-          <NavAuth />
+          <a
+            href="mailto:LoganHorowitz2@gmail.com"
+            className="text-xs font-medium text-zinc-500 hover:text-zinc-900 transition-colors"
+          >
+            Nominate a company →
+          </a>
         </div>
       </nav>
 
       <main className="mx-auto max-w-3xl px-4 py-12">
-        {/* Header */}
         <header className="mb-12 border-b-4 border-zinc-900 pb-8">
           <p className="text-xs font-medium uppercase tracking-widest text-zinc-400 mb-3">
             {today}
@@ -31,10 +33,8 @@ export default function Home() {
             The List
           </h1>
           <p className="text-xl text-zinc-500 leading-relaxed max-w-xl">
-            {companies.length} companies building the future. Curated, opinionated, and worth your attention.
-          </p>
-          <p className="mt-3 text-sm text-zinc-400">
-            Sign in to vote for the companies you&apos;re most excited about.
+            {companies.length} companies building the future. Curated,
+            opinionated, and worth your attention.
           </p>
         </header>
 
