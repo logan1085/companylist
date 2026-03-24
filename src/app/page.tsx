@@ -1,4 +1,5 @@
 import { CompanyGrid } from "@/components/company-grid";
+import { NavAuth } from "@/components/nav-auth";
 import { companies } from "@/data/companies";
 
 export default function Home() {
@@ -15,12 +16,15 @@ export default function Home() {
           <span className="text-xs font-medium uppercase tracking-widest text-zinc-400">
             The List
           </span>
-          <a
-            href="mailto:LoganHorowitz2@gmail.com"
-            className="text-xs font-medium text-zinc-500 hover:text-zinc-900 transition-colors"
-          >
-            Nominate a company →
-          </a>
+          <div className="flex items-center gap-4">
+            <a
+              href="mailto:LoganHorowitz2@gmail.com"
+              className="text-xs font-medium text-zinc-500 hover:text-zinc-900 transition-colors"
+            >
+              Nominate a company →
+            </a>
+            <NavAuth />
+          </div>
         </div>
       </nav>
 
