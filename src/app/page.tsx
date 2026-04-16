@@ -3,59 +3,36 @@ import { NavAuth } from "@/components/nav-auth";
 import { companies } from "@/data/companies";
 
 export default function Home() {
-  const today = new Date().toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-
   return (
-    <div className="min-h-screen bg-white">
-      <nav className="border-b border-zinc-200 sticky top-0 z-10 bg-white">
-        <div className="mx-auto max-w-3xl flex items-center justify-between px-4 py-3">
-          <span className="text-xs font-medium uppercase tracking-widest text-zinc-400">
-            The List
-          </span>
+    <div className="min-h-screen bg-[#fafaf9]">
+      <nav className="border-b border-zinc-200 bg-[#fafaf9]">
+        <div className="mx-auto max-w-2xl flex items-center justify-between px-6 py-3 font-mono text-xs text-zinc-500">
+          <span>~/the-list.txt</span>
           <div className="flex items-center gap-4">
             <a
               href="mailto:LoganHorowitz2@gmail.com"
-              className="text-xs font-medium text-zinc-500 hover:text-zinc-900 transition-colors"
+              className="hover:text-zinc-900"
             >
-              Nominate a company →
+              nominate
             </a>
             <NavAuth />
           </div>
         </div>
       </nav>
 
-      <main className="mx-auto max-w-3xl px-4 py-12">
-        <header className="mb-12 border-b-4 border-zinc-900 pb-8">
-          <p className="text-xs font-medium uppercase tracking-widest text-zinc-400 mb-3">
-            {today}
-          </p>
-          <h1 className="text-5xl font-bold tracking-tight text-zinc-900 leading-tight mb-4">
-            The List
-          </h1>
-          <p className="text-xl text-zinc-500 leading-relaxed max-w-xl">
-            {companies.length} companies building the future. Curated,
-            opinionated, and worth your attention.
-          </p>
+      <main className="mx-auto max-w-2xl px-6 py-12 font-mono">
+        <header className="mb-10 text-sm text-zinc-500 space-y-1">
+          <p># The List</p>
+          <p># {companies.length} companies worth watching.</p>
+          <p># Curated by Logan Horowitz.</p>
         </header>
 
         <CompanyGrid />
-      </main>
 
-      <footer className="border-t border-zinc-100 mt-16 py-8">
-        <div className="mx-auto max-w-3xl px-4 text-center text-xs text-zinc-400">
-          Curated by Logan Horowitz &mdash; want to nominate a company?{" "}
-          <a
-            href="mailto:LoganHorowitz2@gmail.com"
-            className="underline underline-offset-2 hover:text-zinc-600"
-          >
-            Email me
-          </a>
-        </div>
-      </footer>
+        <footer className="mt-12 text-xs text-zinc-400">
+          <p>-- EOF --</p>
+        </footer>
+      </main>
     </div>
   );
 }
