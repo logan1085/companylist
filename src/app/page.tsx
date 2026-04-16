@@ -3,10 +3,9 @@ import { NavAuth } from "@/components/nav-auth";
 import { companies } from "@/data/companies";
 
 export default function Home() {
-  const today = new Date().toLocaleDateString("en-US", {
+  const edition = new Date().toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
-    day: "numeric",
   });
 
   return (
@@ -28,8 +27,7 @@ export default function Home() {
 
       <main className="mx-auto max-w-2xl px-6 py-12 font-mono">
         <header className="mb-10 text-sm text-zinc-500 space-y-1 leading-relaxed">
-          <p># The List</p>
-          <p># {today}</p>
+          <p># The List — {edition} Edition</p>
           <p>#</p>
           <p># A bunch of friends ask me what companies they should look at</p>
           <p># working at. Everyone has different criteria, but I thought it</p>
