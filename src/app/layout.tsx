@@ -9,9 +9,9 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "The List — Companies Worth Watching",
+  title: "The List — 50 Companies Worth Joining",
   description:
-    "A curated, opinionated list of companies building the future. Ranked and worth your attention.",
+    "An opinionated guide to where to work in tech. Updated periodically.",
 };
 
 export default function RootLayout({

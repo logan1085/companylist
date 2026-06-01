@@ -128,3 +128,98 @@
     @apply font-sans;
   }
 }
+
+/* Block cursor for typing header — proper terminal block cursor */
+.terminal-block-cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  background-color: oklch(0.4 0 0);
+  vertical-align: text-bottom;
+  margin-left: 1px;
+  animation: block-cursor-blink 1s ease-in-out infinite;
+}
+
+@keyframes block-cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Footer cursor — subtle blinking underscore */
+.footer-cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 2px;
+  background-color: oklch(0.7 0 0);
+  vertical-align: baseline;
+  margin-left: 2px;
+  animation: footer-cursor-blink 1.2s ease-in-out infinite;
+}
+
+@keyframes footer-cursor-blink {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Focused row highlight for keyboard navigation */
+.focused-row > div:first-child {
+  background-color: oklch(0.97 0 0);
+  outline: 1px solid oklch(0.9 0 0);
+  outline-offset: -1px;
+}
+
+/* List item transition for smooth filtering */
+.list-item-transition {
+  animation: list-item-fade-in 0.2s ease-out;
+}
+
+@keyframes list-item-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Expanded detail subtle entrance */
+.expanded-detail {
+  animation: detail-slide-in 0.25s ease-out;
+}
+
+@keyframes detail-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hide scrollbar for category tabs on mobile */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile spacing improvements */
+@media (max-width: 640px) {
+  .expanded-detail {
+    padding-left: 0.75rem;
+  }
+}
